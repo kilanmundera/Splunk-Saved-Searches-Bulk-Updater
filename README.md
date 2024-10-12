@@ -14,6 +14,16 @@ This Python script allows you to update parameters for multiple saved searches i
 - Python 3.x
 - `splunklib` Python SDK (Install using `pip install splunk-sdk`)
 
+## Installation
+
+1. Install Python dependencies:
+   ```bash
+   pip install splunk-sdk
+   ```
+2. Clone the repository or copy the script to your working directory.
+
+3. Run the script using Python 3.x.
+
 ## Usage
 
 Run the script with the necessary command-line arguments to update the desired saved search parameters. Below are the available arguments and options.
@@ -35,7 +45,7 @@ Run the script with the necessary command-line arguments to update the desired s
 
 ### Password Prompt
 
-The script will prompt for the Splunk password securely via the terminal, so it does not need to be passed as a command-line argument.
+The script prompts for the Splunk password via the terminal.
 
 ### Example Usage
 
@@ -43,31 +53,31 @@ The script will prompt for the Splunk password securely via the terminal, so it 
    ```bash
    python3 savedsearches_bulk_updater.py --app "my_app" --parameter "some_parameter" --value "new_value" --host "localhost" --username "admin"
    ```
-   This will update the `some_parameter` in all saved searches within the app "my_app" to have the value `new_value`.
+   This updates the `some_parameter` in all saved searches within the app "my_app" to have the value `new_value`.
 
 2. **Updating a JSON dictionary parameter**:
    ```bash
    python3 savedsearches_bulk_updater.py --app "my_app" --parameter "action.correlationsearch.annotations" --key "context" --value "PROD" --json-dico --host "localhost" --username "admin"
    ```
-   This will update the JSON dictionary `action.correlationsearch.annotations` and set the value of `"context"` to `["PROD"]`.
+   This updates the JSON dictionary `action.correlationsearch.annotations` and set the value of `"context"` to `["PROD"]`.
 
 3. **Appending to an existing JSON dictionary value**:
    ```bash
    python3 savedsearches_bulk_updater.py --app "my_app" --parameter "action.correlationsearch.annotations" --key "context" --value "PROD" --append --json-dico --host "localhost" --username "admin"
    ```
-   If `"context"` already has the value `["DEV"]`, this will append `PROD` to it, resulting in `["DEV", "PROD"]`.
+   If `"context"` already has the value `["DEV"]`, this appends `PROD` to it, resulting in `["DEV", "PROD"]`.
 
 4. **Updating only one specific saved search**:
    ```bash
    python3 savedsearches_bulk_updater.py --app "my_app" --parameter "action.correlationsearch.annotations" --key "context" --value "DEV" --json-dico --search "my_saved_search" --host "localhost" --username "admin"
    ```
-   This will only update the saved search named `my_saved_search`.
+   This only updates the saved search named `my_saved_search`.
 
 5. **Appending multiple values to an existing JSON key**:
    ```bash
    python3 savedsearches_bulk_updater.py --app "my_app" --parameter "action.correlationsearch.annotations" --key "context" --value "PROD" "STAGE" --append --json-dico --host "localhost" --username "admin"
    ```
-   If `context` already has values `["DEV"]`, this will append `PROD` and `STAGE`, resulting in `["DEV", "PROD", "STAGE"]`.
+   If `context` already has values `["DEV"]`, this appends `PROD` and `STAGE`, resulting in `["DEV", "PROD", "STAGE"]`.
 
 ### Error Handling
 
@@ -75,16 +85,6 @@ The script will prompt for the Splunk password securely via the terminal, so it 
 - If the `--json-dico` option is **not** set, the `--key` argument should **not** be used.
 - If an invalid combination of arguments is provided, the script will display an error and terminate.
 
-## Installation
-
-1. Install Python dependencies:
-   ```bash
-   pip install splunk-sdk
-   ```
-
-2. Clone the repository or copy the script to your working directory.
-
-3. Run the script using Python 3.x.
 
 ## License
 
@@ -93,7 +93,3 @@ This project is licensed under the GPL-3.0 license.
 ## Support
 
 For any questions or issues, feel free to open an issue in the repository or contact the author.
-
----
-
-This `README.md` file covers the basic usage, argument details, and provides examples to help users understand how to run the script effectively. Let me know if you'd like to add or modify any section!
